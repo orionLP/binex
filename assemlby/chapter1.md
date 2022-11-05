@@ -13,7 +13,7 @@ First of all we need to know that binaries in linux are elf files. These files a
 
 You may ask where are the other variables in your code, well they do not "exist" until your program runs. Any variable inside of the code is simply a number or empty space in the .text area awaiting to be executed.
 
-Now we will look into an example of this through the gcc assemlber. But before that i would like to talk about assembler directives.They are parts of the assemlby code that start with a dot and each one has different effects but for now lets look at these:
+Now we will look into an example of this through the gcc assemlber. But before that i would like to talk about assemlby itself a little, specigically about directives.They are parts of the assemlby code that start with a dot, and each one has different effects such as inserting data into the file or changing the permissions of the code, but for now lets look at these:
 
 ```asm
 .data
