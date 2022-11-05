@@ -5,3 +5,6 @@ how far it will go.
 
 There is no planed structure to this repository other than files. If for example you want to search for shellcoding strategies then search in the 
 shellcode file.
+
+
+:)
