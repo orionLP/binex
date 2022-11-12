@@ -5,7 +5,7 @@ In this topic i will cover some type conversions between data of different sizes
 <details>
 <summary>Signed to unsigned</summary>
 
-The resumed case is very simple, any conversion between signed and unsigned preserves the data of the variable in the state is was,
+The typical case is very simple, any conversion between signed and unsigned preserves the data of the variable in the state is was,
 so it simply changes the meaning of the data, for example:
 
 ```c
@@ -18,8 +18,10 @@ so it simply changes the meaning of the data, for example:
 ```
 produces the result:
 
->>4294967295, ffffffff
->>-1, ffffffff
+```bash
+4294967295, ffffffff
+-1, ffffffff
+```
 
 which means that the two's complement representation of -1 in 32 bits its the same as the unsinged representation of 4294967295 in 32 bits.
 
@@ -38,6 +40,45 @@ For example:
 
 Produces the result 0, since the unsigned representation of a is bigger than b.
 
+<summary>Cast to a bigger size</summary>
+
+This one is straight forward, it will simply "add" zeros to the variable that was being used and will keep the signedness. For example the following:
+
+```c
+    int a = 'a';
+    long long b = (long long) a;
+    printf("%d,%lld\n", a, b);
+
+    unsigned int c = 0xffffffff;
+    unsigned long long d = (unsigned long long) c;
+    printf("%u,%llu\n", c, d);
+```
+
+Produces the result:
+
+```bash
+97,97
+4294967295,4294967295
+```
+
+>**Note**
+>When doing any type of computation the type matters, for example if unsigned i = 0xffffffff and in some operation we do 2*i will overflow, however ((unsigned long long)i) * 2 will not.
+
+```c
+    int a = 2147483647; // __INT_MAX__
+    long long b = ((long long)a )*2;
+    printf("%d,%lld\n",a*2,b);
+```
+
+Produces the output
+
+```bash
+-2,4294967294
+```
+
+<summary>Cast to a smaller size</summary>
+
+<summary>Cast one pointer type to another</summary>
 <details>
 
 
