@@ -2,7 +2,7 @@
 
 In this topic i will cover some type conversions between data of different sizes and types (something that when i didn't know gave me some hard to find buggs)
 
-<details>
+
 <summary>Signed to unsigned</summary>
 
 The typical case is very simple, any conversion between signed and unsigned preserves the data of the variable in the state is was,
@@ -79,6 +79,5 @@ Produces the output
 <summary>Cast to a smaller size</summary>
 
 <summary>Cast one pointer type to another</summary>
-<details>
 
 
