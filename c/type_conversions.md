@@ -78,6 +78,23 @@ Produces the output
 
 <summary>Cast to a smaller size</summary>
 
+In this case this is pretty straigth, it will simply take the lowest number of bytes equivalent to the size of the new type and copy them for example:
+
+```c
+    unsigned long long a = 0xffffffffafbfcfdf;
+    int b = (int) a;
+    unsigned c = (unsigned) a;
+    printf("%llx,%x,%x\n",a,b,c);
+```
+
+Produces the following output:
+
+```bash
+ffffffffafbfcfdf,afbfcfdf,afbfcfdf
+```
+
 <summary>Cast one pointer type to another</summary>
+
+
 
 
