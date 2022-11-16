@@ -95,6 +95,22 @@ ffffffffafbfcfdf,afbfcfdf,afbfcfdf
 
 <summary>Cast one pointer type to another</summary>
 
+To understand this one, you must keep in mind two things: a program can be thought of a large array of bytes, some of them are instructions, data, etc..., and the variables in your code are stored in it are just in this memory lane, and they are stored upwards (in the following example first would come the c then the b and then the a). The second thing is that linux is little endian. In the following example when a = 0x1f2f3f4f5f6f7f8f, it is stored as 8f,7f,6f,5f,4f,3f,2f,1f. 
 
+The following code:
 
+```c
+    unsigned long long a = 0x1f2f3f4f5f6f7f8f;
+    unsigned long long* b = &a;
+    int* c = (int*) b;
+    printf("%llx,%x,%x\n",*b,*c,*(c+1));
+```
+Produces the result:
 
+```bash
+1f2f3f4f5f6f7f8f,5f6f7f8f,1f2f3f4f
+```
+
+This is because (for *c) in the first 4 bytes of memory there is the sequence 8f,7f,6f,5f which for an int it means 5f6f7f8f (little endian), and the same can be said about *(c+1).
+
+Something similar will happen if we change from a lesser to a bigger pointer, we will just be looking at a bigger portion of the memory lane.
